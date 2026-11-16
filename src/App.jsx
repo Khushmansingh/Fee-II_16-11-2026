@@ -8,6 +8,15 @@ function App() {
   const [debounceName , setdebounceName] = useState('');
 
   useEffect(() => {
+    let timer = setTimeout(() => {
+      setdebounceName(val);
+    },500)
+    return (() => {
+      clearTimeout(timer)
+    })
+  },[val]);
+
+  useEffect(() => {
     if (!val) {
       setUsers([]);
       return;
