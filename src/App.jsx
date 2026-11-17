@@ -1,5 +1,6 @@
 import Abortrequest from './Abortrequest';
 import { useState, useEffect } from 'react'
+import RetryRequest from './RetryRequest';
 import './App.css'
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const [debounceName, setDebounceName] = useState('');
 
-  // Debouncing
+
   useEffect(() => {
     let timer = setTimeout(() => {
       setDebounceName(val);
@@ -18,7 +19,7 @@ function App() {
     };
   }, [val]);
 
-  // API call
+
   useEffect(() => {
     if (debounceName.trim()) {
       fetch(`https://dummyjson.com/users/search?q=${encodeURIComponent(debounceName)}`)
@@ -58,6 +59,9 @@ function App() {
       </ol>
 
       <Abortrequest/>
+
+
+      <RetryRequest/>
     </>
   )
 }
